@@ -1,0 +1,32 @@
+package main;
+
+import java.util.ArrayList;
+import domain.entity.Member;
+import domain.value.Address;
+
+public class MemberCLI {
+    public static void main(String[] args) {
+        if (args.length < 6) {
+            System.out.println("Usage: java MemberCLI <MemberID> <Name> <Street> <City> <Zip>");
+            return;
+        }
+
+        // Command-line arguments are passed in the 'args' array
+        Long id = Long.parseLong(args[0]); // First argument is Member ID
+        String name = args[1]; // Second argument is Member Name
+        String street = args[2]; // Third argument is Street
+        String city = args[3]; // Fourth argument is City
+        String zip = args[4]; // Fifth argument is Zip
+
+        Address address = new Address(street, city, zip); // Adjust according to your Address class
+
+        // Create a new Member instance
+        Member member = new Member(id, name, address, new ArrayList<>());
+
+        // Print the member details
+        System.out.println("Member created successfully!");
+        System.out.println("Member ID: " + member.getId());
+        System.out.println("Member Name: " + member.getName());
+        System.out.println("Member Address: " + member.getAddress());
+    }
+}
