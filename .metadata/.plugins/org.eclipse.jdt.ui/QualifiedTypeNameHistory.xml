@@ -31,4 +31,5 @@
     <fullyQualifiedTypeName name="spring.MemberInfoPrinter"/>
     <fullyQualifiedTypeName name="spring.ChangePasswordService"/>
     <fullyQualifiedTypeName name="spring.MemberRegisterService"/>
+    <fullyQualifiedTypeName name="java.lang.reflect.Member"/>
 </qualifiedTypeNameHistroy>
