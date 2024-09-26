@@ -108,6 +108,11 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\DU\Downloads\OrderItem-main"/>
+			<item value="C:\Users\DU\Downloads\proj0926"/>
+			<item value="C:\Users\DU\Downloads\1\proj0926"/>
+			<item value="C:\Users\DU\Downloads\_20240926\chap08"/>
+			<item value="C:\Users\DU\Downloads\_20240926\proj0924"/>
 			<item value="C:\Users\DU\Downloads\proj0924"/>
 			<item value="C:\Users\DU\Downloads\chap03"/>
 			<item value="C:\Users\DU\Downloads\chap02"/>

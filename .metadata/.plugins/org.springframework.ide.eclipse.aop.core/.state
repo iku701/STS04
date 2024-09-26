@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
+<aop-project name="chap08"/>
 <aop-project name="proj0924"/>
+<aop-project name="proj0924_01"/>
 <aop-project name="test01"/>
+<aop-project name="chap08_01"/>
 </aop-reference-model>
