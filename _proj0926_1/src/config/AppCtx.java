@@ -30,19 +30,13 @@ public class AppCtx {
 		return new MemberDao(dataSource());
 	}
 	
-//	@Bean
-//	public ItemDao itemDao() {
-//		return new ItemDao(dataSource());
-//	}
+	@Bean
+	public ItemDao itemDao() {
+		return new ItemDao(dataSource());
+	}
 	
-//	@Bean
-//	public OrdersDao ordersDao() {
-//		return new OrdersDao(dataSource());
-//	}
-	
-//	@Bean
-//	public OrderItemDao orderItemDao() {
-//		return new OrderItemDao(dataSource());
-//	}
-	
+	@Bean
+	public OrdersDao ordersDao() {
+		return new OrdersDao(dataSource());
+	}
 }

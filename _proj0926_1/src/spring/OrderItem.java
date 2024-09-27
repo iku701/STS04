@@ -1,18 +1,18 @@
 package spring;
 
 public class OrderItem {
-    private Long id;
-    private Long itemId;
-    private Long orderId;
-    private int orderPrice;
-    private int count;
+    private Long id;  
+    private Long itemId; 
+    private Long orderId;  
+    private int totalPrice;  
+    private int count;  
 
     public OrderItem() {}
 
-    public OrderItem(Long itemId, Long orderId, int orderPrice, int count) {
+    public OrderItem(Long itemId, Long orderId, int totalPrice, int count) {
         this.itemId = itemId;
         this.orderId = orderId;
-        this.orderPrice = orderPrice;
+        this.totalPrice = totalPrice;
         this.count = count;
     }
 
@@ -40,12 +40,12 @@ public class OrderItem {
         this.orderId = orderId;
     }
 
-    public int getOrderPrice() {
-        return orderPrice;
+    public int getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setOrderPrice(int orderPrice) {
-        this.orderPrice = orderPrice;
+    public void setTotalPrice(int totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public int getCount() {
@@ -62,9 +62,8 @@ public class OrderItem {
                 "id=" + id +
                 ", itemId=" + itemId +
                 ", orderId=" + orderId +
-                ", orderPrice=" + orderPrice +
+                ", totalPrice=" + totalPrice +
                 ", count=" + count +
                 '}';
     }
 }
-

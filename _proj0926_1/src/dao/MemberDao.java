@@ -6,7 +6,6 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
-import config.AppCtx;
 import spring.Member;
 
 public class MemberDao {
@@ -26,6 +25,7 @@ public class MemberDao {
         return member;
     };
 
+    
     public List<Member> selectAllMember() {
         String sql = "SELECT * FROM member";
         return jdbcTemplate.query(sql, memberRowMapper);

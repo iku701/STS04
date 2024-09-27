@@ -1,25 +1,53 @@
 package spring;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Orders {
-    private Long id;
-    private Long memberId;
-    private Long orderItemId;
-    private String city;
-    private String street;
-    private String zipcode;
-    private LocalDateTime orderDate;
+    private Long id;  
+    private Long memberId; 
+    private String city; 
+    private String street; 
+    private String zipcode;  
+    private LocalDateTime orderDate; 
+    private List<OrderItem> orderItems = new ArrayList<>();  
 
     public Orders() {}
 
-    public Orders(Long memberId, Long orderItemId, String city, String street, String zipcode) {
+    public Orders(Long id, Long memberId, String city, String street, String zipcode, LocalDateTime orderDate) {
+        this.id = id;
         this.memberId = memberId;
-        this.orderItemId = orderItemId;
+        this.city = city;
+        this.street = street;
+        this.zipcode = zipcode;
+        this.orderDate = orderDate != null ? orderDate : LocalDateTime.now();
+    }
+
+    public Orders(Long memberId, String city, String street, String zipcode) {
+        this.memberId = memberId;
         this.city = city;
         this.street = street;
         this.zipcode = zipcode;
         this.orderDate = LocalDateTime.now();  
+    }
+
+    public void addOrderItem(OrderItem orderItem) {
+        this.orderItems.add(orderItem);
+    }
+
+    public int getTotalPrice() {
+        return orderItems.stream()
+                .mapToInt(OrderItem::getTotalPrice)  
+                .sum();
+    }
+
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
     }
 
     public Long getId() {
@@ -36,14 +64,6 @@ public class Orders {
 
     public void setMemberId(Long memberId) {
         this.memberId = memberId;
-    }
-
-    public Long getOrderItemId() {
-        return orderItemId;
-    }
-
-    public void setOrderItemId(Long orderItemId) {
-        this.orderItemId = orderItemId;
     }
 
     public String getCity() {
@@ -83,12 +103,12 @@ public class Orders {
         return "Orders{" +
                 "id=" + id +
                 ", memberId=" + memberId +
-                ", orderItemId=" + orderItemId +
                 ", city='" + city + '\'' +
                 ", street='" + street + '\'' +
                 ", zipcode='" + zipcode + '\'' +
                 ", orderDate=" + orderDate +
+                ", totalPrice=" + getTotalPrice() + 
+                ", orderItems=" + orderItems +      
                 '}';
     }
 }
-
