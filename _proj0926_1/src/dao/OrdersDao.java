@@ -118,5 +118,24 @@ public class OrdersDao {
         public List<Orders> getOrders() {
             return List.copyOf(orderMap.values());
         }
+        
+        
     }
+    
+    public void deleteOrdersByItemId(Long itemId) {
+        String deleteOrderItemSql = "DELETE FROM order_item WHERE item_id = ?";
+        jdbcTemplate.update(deleteOrderItemSql, itemId);
+
+        String deleteOrdersSql = "DELETE FROM orders WHERE id NOT IN (SELECT DISTINCT order_id FROM order_item)";
+        jdbcTemplate.update(deleteOrdersSql);
+
+        System.out.println("해당 상품이 포함된 모든 주문이 삭제되었습니다.");
+    }
+
+    public boolean isItemOrdered(Long itemId) {
+        String sql = "SELECT COUNT(*) FROM order_item WHERE item_id = ?";
+        Integer count = jdbcTemplate.queryForObject(sql, new Object[]{itemId}, Integer.class);
+        return count != null && count > 0;
+    }
+    
 }

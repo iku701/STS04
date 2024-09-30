@@ -71,7 +71,6 @@ public class Main {
             } else {
                 printHelp();
             }
-
         }
 
         ctx.close();
@@ -197,6 +196,28 @@ public class Main {
             return;
         }
 
+        Item item = existingItems.get(0);
+
+        boolean isItemOrdered = ordersDao.isItemOrdered(item.getId());
+
+        if (isItemOrdered) {
+            System.out.println("해당 상품은 주문에 포함되어 있습니다. 정말 삭제하시겠습니까? (Y/N)");
+            String confirmation = reader.readLine();
+
+            if (!confirmation.equalsIgnoreCase("Y")) {
+                System.out.println("상품 삭제가 취소되었습니다.");
+                return;
+            }
+
+            System.out.println("해당 상품이 포함된 주문도 함께 취소하시겠습니까? (Y/N)");
+            String deleteOrdersConfirmation = reader.readLine();
+
+            if (deleteOrdersConfirmation.equalsIgnoreCase("Y")) {
+                ordersDao.deleteOrdersByItemId(item.getId());
+                System.out.println("해당 상품이 포함된 모든 주문이 취소되었습니다.");
+            }
+        }
+
         itemDao.deleteItem(name);
         System.out.println("해당 상품이 삭제되었습니다.");
     }
@@ -261,7 +282,6 @@ public class Main {
         Long orderId = ordersDao.insertOrder(newOrder);
         System.out.println("주문이 성공적으로 추가되었습니다. 주문 ID: " + orderId);
     }
-
 
     private static void deleteOrderCommand(BufferedReader reader) throws IOException {
         System.out.println("삭제할 주문의 ID를 입력하세요:");
